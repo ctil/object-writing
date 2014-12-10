@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="objectWriting">
 <head>
     <meta charset="UTF-8">
     <base href="/">
@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="libs/angular/angular.min.js"></script>
-    <script src="libs/angular-route/angular-route.min.js"></script>
+    <!--<script src="libs/angular-route/angular-route.min.js"></script>-->
+    <script src="js/app.js"></script>
 </head>
-<body>
+<body ng-controller="mainController">
     <div class="container">
 	<nav class="navbar navbar-inverse">
 	<div class="navbar-header">
@@ -18,7 +19,8 @@
 	</nav>
 
 	<div class="row-fluid">
-	    <button class="btn btn-primary">New Word</button>
+	    <button class="btn btn-primary" ng-click="updateWord()">New Word</button>
+	    <span>{{ word }}</span>
 	    <textarea class="form-control" rows="10"></textarea>
 	</div>
     </div>
