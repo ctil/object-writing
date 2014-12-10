@@ -12,6 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
 
+// routes
+require('./app/routes')(app);
+
 // start app 
 app.listen(port);
 console.log('Starting on port ' + port);
