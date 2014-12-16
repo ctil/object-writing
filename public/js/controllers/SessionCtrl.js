@@ -10,6 +10,14 @@ angular.module('SessionCtrl', []).controller('SessionController', function($scop
     };
 
     updateWord();
+    $scope.timerMinutes = 10;
+
+    $scope.incrementMinutes = function() {
+	$scope.timerMinutes += 1;
+    };
+    $scope.decrementMinutes = function() {
+	$scope.timerMinutes -= 1;
+    };
 
     $scope.updateWord = function() {
         updateWord();
