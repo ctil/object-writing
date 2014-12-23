@@ -1,25 +1,17 @@
-angular.module('SessionCtrl', []).controller('SessionController', function($scope, $http) {
+angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$http', 'settings', function($scope, $http, settings) {
     function updateWord() {
         $http.get('/api/word')
             .success(function(data) {
-        	$scope.word = data;
+        	settings.word = data;
             })
             .error(function(data) {
         	console.log('Error: ' + data);
             });
     };
 
-    updateWord();
-    $scope.timerMinutes = 10;
-
-    $scope.incrementMinutes = function() {
-	$scope.timerMinutes += 1;
-    };
-    $scope.decrementMinutes = function() {
-	$scope.timerMinutes -= 1;
-    };
+    $scope.settings = settings;
 
     $scope.updateWord = function() {
         updateWord();
     };
-});
+}]);
