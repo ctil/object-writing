@@ -6,7 +6,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	})
 	.when('/setup', {
 	    templateUrl: 'views/setup.html',
-	    controller: 'SessionController'
+	    controller: 'SetupController'
 	})
 	.when('/session', {
 	    templateUrl: 'views/session.html',

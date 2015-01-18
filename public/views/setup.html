@@ -1,21 +1,10 @@
 <h2>How long would you like to write (minutes)?</h2>
 <div class="input-group col-lg-4">
-    <input type="text" class="form-control" value="{{settings.timerMinutes}}">
-    <span class="input-group-btn">
-	<button class="btn btn-default" type="button" ng-click="settings.decrementMinutes()">
-	    <span class="glyphicon glyphicon-minus"></span>
-	</button>
-    </span>
-    <span class="input-group-btn">
-	<button class="btn btn-default" type="button" ng-click="settings.incrementMinutes()">
-	    <span class="glyphicon glyphicon-plus"></span>
-	</button>
-    </span>
+    <input type="number" class="form-control" ng-model="data.minutes">
 </div>
 <h2>Choose a word for inspiration:</h2>
 <div class="input-group col-lg-4">
-    <!--FIXME: fix data binding-->
-    <input type="text" class="form-control" value="{{settings.word}}">
+    <input type="text" class="form-control" ng-model="data.word">
     <span class="input-group-btn">
 	<button class="btn btn-default" ng-click="updateWord()" type="button">
 	    Generate Word

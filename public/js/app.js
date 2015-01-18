@@ -1,3 +1,4 @@
-angular.module('objectWriting', ['ngRoute', 'appRoutes', 'MainCtrl', 'SessionCtrl', 'SettingsService']);
+angular.module('objectWriting', ['ngRoute', 'appRoutes', 'MainCtrl', 'SessionCtrl', 
+	'SettingsService', 'SetupCtrl']);
 
 
