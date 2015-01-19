@@ -1,5 +1,9 @@
 <div class="row-fluid">
-    <h3>{{ settings.word }}</h3>
-    <h3>Timer: {{ settings.timerMinutes }}</h3>
-    <textarea class="form-control" rows="10"></textarea>
+    <h3>{{ word }}</h3>
+    <div class="progress">
+	<div class="progress-bar" role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percentage }}%;">
+	    {{ (secondsLeft/60)| number:0 }} min
+	</div>
+    </div>
+    <textarea id="writing-area" class="form-control" rows="10"></textarea>
 </div>
