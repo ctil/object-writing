@@ -6,7 +6,7 @@ function randomInt(low, high) {
 
 module.exports = function(app) {
 
-    app.get('/api/word', function(req, res) {
+    app.get('/api/words', function(req, res) {
 	/* Returns a random word to inspire object writing */
 	var index = randomInt(0, words.length - 1);
 	res.send(words[index]);

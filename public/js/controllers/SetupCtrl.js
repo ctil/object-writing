@@ -1,6 +1,6 @@
 angular.module('SetupCtrl', []).controller('SetupController', ['$scope', '$http', 'settings', function($scope, $http, settings) {
     function updateWord() {
-        $http.get('/api/word')
+        $http.get('/api/words')
             .success(function(data) {
 		$scope.data.word = data;
             })
