@@ -6,6 +6,10 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
+// Connect to database
+var database = require('./app/config/database');
+//mongoose.connect(database.url);
+
 var port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
