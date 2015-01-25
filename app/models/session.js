@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 
-var Session = mongoose.model('Session', {
-    userId: ObjectId,
+module.exports = mongoose.model('Session', {
+    // TODO: add users
+    //userId: ObjectId,
     text: String,
     date: Date,
     word: String
