@@ -4,14 +4,17 @@ angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$h
     $scope.data.text = '';
     var timerSeconds = settings.timerMinutes * 60; 
     $scope.secondsLeft = timerSeconds;
+    $scope.minutesLeft = Math.floor(timerSeconds/60);
     document.getElementById('writing-area').focus();
 
     function updateTimer() {
 	$scope.secondsLeft -= 1;
-	$scope.percentage = $scope.secondsLeft/(timerSeconds) * 100;
+	$scope.minutesLeft = Math.floor($scope.secondsLeft/60);
 	if ( $scope.secondsLeft <= 0) {
 	    $interval.cancel(stop);
-	    alert('Time is up!');
+	    // TODO: use something other than an alert and go to a different view.
+	    alert('Time is up!  Saving session.');
+	    $scope.saveSession();
 	}
 
     };
@@ -23,7 +26,6 @@ angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$h
 	    time: new Date(),
 	    word: $scope.word
 	};
-	console.log(json);
 	$http.post('/api/sessions', json)
 	    .success(function(data) {
 		console.log('Success: ', data);

@@ -1,10 +1,4 @@
 <div class="row-fluid">
-    <h3>{{ word }}</h3>
-    <div class="progress">
-	<div class="progress-bar" role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percentage }}%;">
-	    {{ (secondsLeft/60)| number:0 }} min
-	</div>
-    </div>
+    <h3>{{ word }} {{ minutesLeft }}:{{ secondsLeft%60 | number: 0 }}</h3>
     <textarea id="writing-area" ng-model="data.text" class="form-control" rows="10"></textarea>
-    <a class="btn btn-primary btn-lg" type="button" ng-click="saveSession()">Save</a>
 </div>
