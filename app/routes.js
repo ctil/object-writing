@@ -28,9 +28,4 @@ module.exports = function(app) {
       res.send({});
 	});
     });
-
-    app.get('*', function(req, res) {
-	res.sendfile('./public/index.html');
-    });
-
 }
