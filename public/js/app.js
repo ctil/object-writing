@@ -1,4 +1,4 @@
 angular.module('objectWriting', ['ngRoute', 'appRoutes', 'MainCtrl', 'SessionCtrl', 
-	'SettingsService', 'SetupCtrl']);
+	       'SettingsService', 'SetupCtrl', 'ui.bootstrap']);
 
 

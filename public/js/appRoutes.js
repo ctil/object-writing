@@ -4,10 +4,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	    templateUrl: 'views/home.html',
 	    controller: 'MainController'
 	})
-	.when('/setup', {
-	    templateUrl: 'views/setup.html',
-	    controller: 'SetupController'
-	})
 	.when('/session', {
 	    templateUrl: 'views/session.html',
 	    controller: 'SessionController'

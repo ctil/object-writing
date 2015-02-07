@@ -1,3 +1,29 @@
+<!-- See here: http://angular-ui.github.io/bootstrap/#/getting_started -->
+<script type="text/ng-template" id="setupModal.html">
+    <div class="modal-header">
+	<h4 class="modal-title">Setup</h4>
+    </div>
+    <div class="modal-body">
+	<p>How many minutes?</p>
+	<div class="input-group col-lg-4">
+	    <input type="number" class="form-control" ng-model="data.minutes">
+	</div>
+	<p>Choose a word for inspiration:</p>
+	<div class="input-group col-lg-4">
+	    <input type="text" class="form-control" ng-model="data.word">
+	    <span class="input-group-btn">
+		<button class="btn btn-default" ng-click="updateWord()" type="button">
+		    Generate Word
+		</button>
+	    </span>
+	</div>
+    </div>
+    <div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	<button type="button" class="btn btn-primary">Write!</button>
+    </div>
+</script>
+
 <div class="row-fluid">
     <h3>{{ word }} {{ minutesLeft }}:{{ secondsLeft%60 | number: 0 }}</h3>
     <textarea id="writing-area" ng-model="data.text" class="form-control" rows="10"></textarea>

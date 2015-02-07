@@ -1,11 +1,19 @@
-angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$http', 'settings', '$interval', function($scope, $http, settings, $interval) {
-    $scope.word = settings.word;
+angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$http', '$modal', '$interval', function($scope, $http, $modal, $interval) {
+    $scope.word = 'hello';
     $scope.data = {};
+    $scope.data.word = 'word';
+    $scope.data.minutes = 10;
     $scope.data.text = '';
-    var timerSeconds = settings.timerMinutes * 60; 
+    $scope.timerMinutes = 10;
+
+    var timerSeconds = $scope.timerMinutes * 60; 
     $scope.secondsLeft = timerSeconds;
     $scope.minutesLeft = Math.floor(timerSeconds/60);
-    document.getElementById('writing-area').focus();
+    //document.getElementById('writing-area').focus();
+    var modalInstance = $modal.open({
+      templateUrl: 'setupModal.html',
+      controller: 'SetupController',
+    });
 
     function updateTimer() {
 	$scope.secondsLeft -= 1;
@@ -18,7 +26,13 @@ angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$h
 	}
 
     };
-    var stop = $interval(updateTimer, 1000);
+
+    $scope.beginWriting = function() {
+	var stop = $interval(updateTimer, 1000);
+	$scope.$on('$destroy', function() {
+	    $interval.cancel(stop);
+	});
+    };
 
     $scope.saveSession = function() {
 	var json = {
@@ -35,7 +49,4 @@ angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$h
 	    });
     };
 
-    $scope.$on('$destroy', function() {
-        $interval.cancel(stop);
-    });
 }]);
