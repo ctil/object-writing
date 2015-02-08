@@ -1,4 +1,4 @@
-angular.module('SetupCtrl', []).controller('SetupController', ['$scope', '$http', 'settings', function($scope, $http, settings) {
+angular.module('SetupCtrl', []).controller('SetupController', ['$scope', '$http', '$modalInstance', function($scope, $http, $modalInstance) {
     function updateWord() {
         $http.get('/api/words')
             .success(function(data) {
@@ -9,18 +9,17 @@ angular.module('SetupCtrl', []).controller('SetupController', ['$scope', '$http'
             });
     };
     $scope.data = {};
-    $scope.settings = settings;
     updateWord();
     $scope.data.minutes = 10;
 
     $scope.updateWord = function() {
         updateWord();
     };
-
-    $scope.$watch('data.word', function(word) {
-        settings.word = word;
-    });
-    $scope.$watch('data.minutes', function(minutes) {
-        settings.timerMinutes = minutes;
-    });
+    $scope.begin = function() {
+	$modalInstance.close($scope.data);
+    };
+    $scope.cancel = function() {
+	$modalInstance.close();
+	location.href = '#/';
+    };
 }]);

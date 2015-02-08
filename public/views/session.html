@@ -19,12 +19,12 @@
 	</div>
     </div>
     <div class="modal-footer">
-	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-	<button type="button" class="btn btn-primary">Write!</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+	<button type="button" class="btn btn-primary" ng-click="begin()">Write!</button>
     </div>
 </script>
 
-<div class="row-fluid">
+<div class="row-fluid" ng-show="writingInProgress">
     <h3>{{ word }} {{ minutesLeft }}:{{ secondsLeft%60 | number: 0 }}</h3>
     <textarea id="writing-area" ng-model="data.text" class="form-control" rows="10"></textarea>
 </div>

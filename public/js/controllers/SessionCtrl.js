@@ -1,37 +1,46 @@
-angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$http', '$modal', '$interval', function($scope, $http, $modal, $interval) {
-    $scope.word = 'hello';
-    $scope.data = {};
-    $scope.data.word = 'word';
-    $scope.data.minutes = 10;
-    $scope.data.text = '';
-    $scope.timerMinutes = 10;
+angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$http', '$modal', '$interval', '$timeout', function($scope, $http, $modal, $interval, $timeout) {
 
-    var timerSeconds = $scope.timerMinutes * 60; 
-    $scope.secondsLeft = timerSeconds;
-    $scope.minutesLeft = Math.floor(timerSeconds/60);
-    //document.getElementById('writing-area').focus();
+    $scope.writingInProgress = false;
     var modalInstance = $modal.open({
       templateUrl: 'setupModal.html',
       controller: 'SetupController',
     });
 
-    function updateTimer() {
+    modalInstance.result.then(function(data) {
+	$scope.word = data.word;
+	$scope.minutes = data.minutes;	
+	$scope.data = {};
+	var timerSeconds = $scope.minutes * 60;
+	$scope.data.text = '';
+	$scope.secondsLeft = timerSeconds;
+	$scope.minutesLeft = Math.floor(timerSeconds/60);
+	$scope.writingInProgress = true;
+	$timeout(function () {
+	    document.getElementById('writing-area').focus();
+	});
+
+	// Start timer
+	var timer = $interval(function () {
+	    updateTimer(timer);
+	}, 1000);
+	$scope.$on('$destroy', function() {
+	    $interval.cancel(timer);
+	});
+    });
+
+    function updateTimer(timer) {
 	$scope.secondsLeft -= 1;
 	$scope.minutesLeft = Math.floor($scope.secondsLeft/60);
-	if ( $scope.secondsLeft <= 0) {
-	    $interval.cancel(stop);
+	if ( $scope.secondsLeft == 0) {
+	    $interval.cancel(timer);
 	    // TODO: use something other than an alert and go to a different view.
 	    alert('Time is up!  Saving session.');
 	    $scope.saveSession();
+	    var elem = document.getElementById('writing-area');
+	    elem.blur();
+	    angular.element(elem).attr('readonly', true);
 	}
 
-    };
-
-    $scope.beginWriting = function() {
-	var stop = $interval(updateTimer, 1000);
-	$scope.$on('$destroy', function() {
-	    $interval.cancel(stop);
-	});
     };
 
     $scope.saveSession = function() {
