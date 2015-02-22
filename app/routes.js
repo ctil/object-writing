@@ -25,7 +25,7 @@ module.exports = function(app) {
     app.post('/api/sessions', function (req, res, next) {
 	Session.create(req.body, function(err, session) {
 	    if (err) return next(err);
-      res.send({});
+	    res.send({});
 	});
     });
 }
