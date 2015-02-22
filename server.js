@@ -23,6 +23,11 @@ app.use(morgan('dev'));
 // routes
 require('./app/routes')(app);
 
+app.use(function (err, req, res, next) {
+  console.error(err);
+  res.send('Five-Oh-Oh');
+});
+
 // start app 
 app.listen(port);
 console.log('Starting on port ' + port);
