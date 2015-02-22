@@ -13,27 +13,19 @@ module.exports = function(app) {
 	res.send(words[index]);
     });
 
-    app.get('/api/sessions', function(req, res) {
+    app.get('/api/sessions', function (req, res, next) {
 	Session.find(function(err, sessions) {
 
-	    if (err) {
-		res.send(err);
-	    }
+	    if (err) return next(err);
 
 	    res.json(sessions);
 	});
     });
 
-    app.post('/api/sessions', function(req, res) {
+    app.post('/api/sessions', function (req, res, next) {
 	Session.create(req.body, function(err, session) {
-	    if (err) {
-		res.send(err);
-	    }
+	    if (err) return next(err);
+	    res.send({});
 	});
     });
-
-    app.get('*', function(req, res) {
-	res.sendfile('./public/index.html');
-    });
-
 }
