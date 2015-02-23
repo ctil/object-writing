@@ -7,6 +7,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	.when('/session', {
 	    templateUrl: 'views/session.html',
 	    controller: 'SessionController'
+	})
+	.when('/history', {
+	    templateUrl: 'views/history.html',
+	    controller: 'HistoryController'
 	});
 
 	$locationProvider.html5Mode(true);

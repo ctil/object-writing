@@ -46,7 +46,7 @@ angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$h
     $scope.saveSession = function() {
 	var json = {
 	    text: $scope.data.text,
-	    time: new Date(),
+	    date: new Date(),
 	    word: $scope.word
 	};
 	$http.post('/api/sessions', json)
