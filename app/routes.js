@@ -1,5 +1,6 @@
 var words = require('./words.json');
 var Session = require('./models/session');
+var path = require('path');
 
 function randomInt(low, high) {
     return Math.floor(Math.random() * (high - low) + low);
@@ -27,5 +28,11 @@ module.exports = function(app) {
 	    if (err) return next(err);
 	    res.send({});
 	});
+    });
+
+    // TODO: determine if this is needed
+    app.get('*', function(req, res) {
+	res.sendFile(path.join(__dirname, '../public', 'index.html'));
+
     });
 }

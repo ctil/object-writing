@@ -1,15 +1,15 @@
 <!-- See here: http://angular-ui.github.io/bootstrap/#/getting_started -->
 <script type="text/ng-template" id="setupModal.html">
     <div class="modal-header">
-	<h4 class="modal-title">Setup</h4>
+	<h4 class="modal-title">Settings</h4>
     </div>
     <div class="modal-body">
 	<p>How many minutes?</p>
-	<div class="input-group col-lg-4">
+	<div class="input-group col-lg-6">
 	    <input type="number" class="form-control" ng-model="data.minutes">
 	</div>
 	<p>Choose a word for inspiration:</p>
-	<div class="input-group col-lg-4">
+	<div class="input-group col-lg-6">
 	    <input type="text" class="form-control" ng-model="data.word">
 	    <span class="input-group-btn">
 		<button class="btn btn-default" ng-click="updateWord()" type="button">

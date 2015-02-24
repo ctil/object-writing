@@ -4,6 +4,8 @@ angular.module('SessionCtrl', []).controller('SessionController', ['$scope', '$h
     var modalInstance = $modal.open({
       templateUrl: 'setupModal.html',
       controller: 'SetupController',
+      keyboard: false,
+      windowClass: 'settings-modal'
     });
 
     modalInstance.result.then(function(data) {
