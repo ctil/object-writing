@@ -30,9 +30,7 @@ module.exports = function(app) {
 	});
     });
 
-    // TODO: determine if this is needed
     app.get('*', function(req, res) {
 	res.sendFile(path.join(__dirname, '../public', 'index.html'));
-
     });
 }
